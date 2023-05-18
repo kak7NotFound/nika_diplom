@@ -132,7 +132,7 @@ async def unsubscribe(bot, message):
 
 # Handler for callback query
 @bot.on_callback_query()
-async def callback_handler(bot, event:pyrogram.types.bots_and_keyboards.callback_query.CallbackQuery):
+async def callback_handler(bot, event: pyrogram.types.bots_and_keyboards.callback_query.CallbackQuery):
     data = event.data
     await button_press(text=data, event=event)
 
@@ -155,8 +155,8 @@ async def button_press(text, event: pyrogram.types.bots_and_keyboards.callback_q
 
         rasp = []
         for d in data.get("data").get("rasp"):
-        # МЕТОД ДЛЯ СЕГОДНЯ
-        #     if datetime.datetime.now().isoformat()[0:10] == d.get("дата")[0:10]:
+            # МЕТОД ДЛЯ СЕГОДНЯ
+            #     if datetime.datetime.now().isoformat()[0:10] == d.get("дата")[0:10]:
             if "2022-09-13" == d.get("дата")[0:10]:
                 rasp.append(d)
 
@@ -167,12 +167,12 @@ async def button_press(text, event: pyrogram.types.bots_and_keyboards.callback_q
         else:
             text = f"Расписание на сегодня\n\n"
             for i in rasp:
-               text = text + \
-                      f"Предмет: {i.get('дисциплина')}\n" \
-                      f"Начало: {i.get('начало')}\n" \
-                      f"Конец: {i.get('конец')}\n" \
-                      f"Аудитория: {i.get('аудитория')}\n" \
-                      f"Преподаватель: {i.get('преподаватель')}\n\n"
+                text = text + \
+                       f"Предмет: {i.get('дисциплина')}\n" \
+                       f"Начало: {i.get('начало')}\n" \
+                       f"Конец: {i.get('конец')}\n" \
+                       f"Аудитория: {i.get('аудитория')}\n" \
+                       f"Преподаватель: {i.get('преподаватель')}\n\n"
 
         await event.message.edit_text(text)
 
